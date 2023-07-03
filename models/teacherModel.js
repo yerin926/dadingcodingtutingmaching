@@ -31,14 +31,34 @@ module.exports = {
             WHEN '5' THEN '토요일'
             WHEN '6' THEN '일요일'
             END as weekday,
-            DATE_FORMAT(c_datetime, '%H : %i') as time
+            DATE_FORMAT(c_datetime, '%H : %i') AS time,
+            MONTH(c_datetime) AS month,
+            DAY(c_datetime) AS day
             FROM classes
             WHERE c_tid=?`
             let res = await db.query(rawQuery, [id]);
-            console.log(res[0]);
-            return res[0][0];
+            return res[0];
         } catch(err) {
             return err;
         }
+    },
+
+    getApptById: async(id) => {
+        try {
+            let rawQuery = `
+            SELECT tt_id, tt_tid, tt_day, tt_start, tt_end,
+            TIME_FORMAT(tt_start, '%H:%i') AS form_tt_start, TIME_FORMAT(tt_end, '%H:%i') AS form_tt_end
+            FROM able_ttimes
+            WHERE tt_tid=?`
+            let res = await db.query(rawQuery, [id]);
+            console.log(res[0])
+            return res[0];
+        } catch(err) {
+            return err;
+        }
+    },
+
+    insertAppt: async() => {
+        return 0;
     }
 }

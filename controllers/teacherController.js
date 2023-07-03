@@ -6,7 +6,6 @@ const id = 'ywonchae1';
 module.exports = {
     teacherPage: async(req, res) => {
         let teacherInfo = await teacherModel.getInfoById(id);
-        console.log(teacherInfo);
         res.render(
             'user/userLayout.ejs',
             {
@@ -18,6 +17,7 @@ module.exports = {
 
     teacherSchedule: async(req, res) => {
         let teacherSchedules = await teacherModel.getScheduleById(id);
+        
         res.render(
             'user/userLayout.ejs',
             {
@@ -25,6 +25,24 @@ module.exports = {
                 info: teacherSchedules
             }
         );
+    },
+
+    teacherAppt: async(req, res) => {
+        let teacherAppts = await teacherModel.getApptById(id);
+
+        res.render(
+            'user/userLayout.ejs',
+            {
+                content: 'teacher/appointment.ejs',
+                info: teacherAppts
+            }
+        )
+    },
+
+    teacherAddAppt: async(req, res) => {
+        console.log(req);
+        await teacherModel.insertAppt();
+        res.send('success');
     },
 
     teacherRegister: async(req, res) => {

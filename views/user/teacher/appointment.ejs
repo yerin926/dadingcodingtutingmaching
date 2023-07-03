@@ -1,0 +1,122 @@
+<head>
+  <script src="/js/appointment.js" defer></script>
+</head>
+
+<label class="fs-1 fw-bold title">되는 시간 등록</label>
+
+<div class="d-grid able-board">
+
+  <div class="row">
+
+    <div class="col-md-12 col-lg-6">
+
+      <div class="d-grid my-5">
+        <div class="row mb-5">
+          <div class="col fs-4">되는 시간 선택</div>
+          <div class="col"><button class="btn-blue-light" type="submit" form="all">전체 등록</button></div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="6" hidden>일
+          </div>
+          <div class="col">
+            <input id="sun_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="sun_end" type="time">
+            <button id="sundaySchedule" class="plus" type="submit"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="0" hidden>월
+          </div>
+          <div class="col">
+            <input id="mon_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="mon_end" type="time">
+            <button id="mondaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="1" hidden>화
+          </div>
+          <div class="col">
+            <input id="tue_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="tue_end" type="time">
+            <button id="tuesdaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="2" hidden>수
+          </div>
+          <div class="col">
+            <input id="wed_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="wed_end" type="time">
+            <button id="wednesdaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="3" hidden>목
+          </div>
+          <div class="col">
+            <input id="thu_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="thu_end" type="time">
+            <button id="thursdaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="4" hidden>금
+          </div>
+          <div class="col">
+            <input id="fri_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="fri_end" type="time">
+            <button id="fridaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-1 week">
+            <input name="weekday" type="text" value="5" hidden>토
+          </div>
+          <div class="col">
+            <input id="sat_start" type="time"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
+              id="sat_end" type="time">
+            <button id="saturdaySchedule" class="plus"><i class="ri-add-circle-line"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+
+      <% let timeHTML='' ; %>
+        <% info.forEach(time=> { %>
+          <% timeHTML +=`<form action="" class="timeform">
+            <div class="row p-2"><input name="ttId" value=${time.tt_id} hidden>
+              <div class="col">${time.tt_day}&nbsp;&nbsp;${time.form_tt_start}&nbsp;<i
+                  class="ri-arrow-right-line"></i>&nbsp;${time.form_tt_end}</div>
+              <div class="col"><button class="delete"><i class="ri-delete-bin-line"></i></button></div>
+            </div>
+            </form>` %>
+      <% }); %>
+
+      <div class="d-grid my-5 able-board">
+        <div class="row mb-5">
+          <div class="col fs-4">등록된 시간</div>
+          <div class="col"><button class="btn-blue-light" type="submit">변경 사항 적용</button>
+          </div>
+        </div>
+        <%- timeHTML %>
+        <div class="row my-2">
+          <div class="col">------ 새로운 일정 ------</div>
+        </div>
+        <div id="newAvailable"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

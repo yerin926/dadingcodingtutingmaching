@@ -7,6 +7,10 @@
   --dc-blue-ligt: #DFF6FF;
 }
 
+html {
+  font-size: 63.8%;
+}
+
 body {
   margin: 0;
   font-family: 'Hahmlet', serif;
@@ -27,4 +31,62 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 1rem 4rem 1rem 1rem;
   width: 3rem;
   height: 3rem;
+}
+
+/* Button */
+
+.btn-blue, .btn-blue-dark, .btn-green, .btn-blue-light {
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+}
+
+.btn-blue {
+  background-color: var(--dc-blue);
+}
+
+.btn-blue-dark {
+  background-color: var(--dc-blue-dark);
+}
+
+.btn-green {
+  background-color: var(--dc-green);
+}
+
+.btn-blue-light {
+  background-color: var(--dc-blue-ligt);
+  color: var(--dc-blue-dark);
+}
+
+.btn-trans {
+  background-color: transparent;
+  color: black;
+  border: none;
+  border-radius: 100%;
+  width: auto;
+  height: 80%;
+}
+
+.btn-trans:hover {
+  background-color: lightblue;
+  opacity: 0.5;
+}
+
+.btn-blue:hover, .btn-blue-dark:hover, .btn-green:hover, .btn-blue-light:hover {
+  opacity: 0.8;
+}
+
+/* Input */
+
+input {
+  border: solid 1px;
+  border-color: lightgray;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  border: none;
+  background-color: transparent;
 }

@@ -18,6 +18,16 @@ router.get(
 );
 
 router.get(
+    '/appointments',
+    teacherController.teacherAppt
+);
+
+router.get(
+    '/addTimeProcess',
+    teacherController.teacherAddAppt
+);
+
+router.get(
     '/attend',
     //teacherController.teacherPage
 );
