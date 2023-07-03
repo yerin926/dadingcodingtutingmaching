@@ -6,6 +6,7 @@ const id = 'ywonchae1';
 module.exports = {
     teacherPage: async(req, res) => {
         let teacherInfo = await teacherModel.getInfoById(id);
+        console.log(teacherInfo);
         res.render(
             'user/userLayout.ejs',
             {
