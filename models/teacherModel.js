@@ -58,6 +58,13 @@ module.exports = {
         }
     },
 
+    getAttendById: async(id) => {
+        try {
+        } catch(err) {
+            return err;
+        }
+    },
+
     insertAppt: async() => {
         return 0;
     }

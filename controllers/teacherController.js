@@ -46,5 +46,17 @@ module.exports = {
     },
 
     teacherRegister: async(req, res) => {
+    },
+
+    teacherAttend: async(req, res) => {
+         let teacherAttends = await teacherModel.getAttendById(id);
+         
+         res.render(
+            'user/userLayout.ejs',
+            {
+                content: 'teacher/attendance.ejs',
+                info: teacherAttends
+            }
+        );
     }
 };

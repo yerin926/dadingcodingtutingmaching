@@ -29,7 +29,7 @@ router.get(
 
 router.get(
     '/attend',
-    //teacherController.teacherPage
+    teacherController.teacherAttend
 );
 
 module.exports = router;
