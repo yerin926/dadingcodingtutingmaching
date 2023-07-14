@@ -51,8 +51,56 @@ module.exports = {
             FROM able_ttimes
             WHERE tt_tid=?`
             let res = await db.query(rawQuery, [id]);
-            console.log(res[0])
             return res[0];
+        } catch(err) {
+            return err;
+        }
+    },
+
+    insertAppt: async(id, data) => {
+        try {
+            let rawQuery = `
+            INSERT INTO able_ttimes (tt_tid, tt_day, tt_start, tt_end)
+            VALUES (?, ?, ?, ?);
+            `
+
+            dataLength = data['new'].length;
+            if(dataLength === 0) {
+                return;
+            } else if(dataLength === 1) {
+                await db.query(rawQuery, [id, data['day'], data['startTime'], data['endTime']]);
+            } else {
+                for(let i = 0; i < dataLength; i++) {
+                    await db.query(rawQuery, [id, data['day'][i], data['startTime'][i], data['endTime'][i]]);
+                }
+            }
+        } catch(err) {
+            return err;
+        }
+    },
+
+    deleteAppt: async(id, data) => {
+        try {
+            let getApptRawQuery = `
+            SELECT tt_id
+            FROM able_ttimes
+            WHERE tt_tid=?;`;
+            let rawQuery = `
+            DELETE FROM able_ttimes
+            WHERE tt_id=?;`;
+            let res = await db.query(getApptRawQuery, [id]);
+            let appt = res[0];
+            let apptList = [];
+            for(let j = 0; j < appt.length; j++) {
+                apptList.push(appt[j]['tt_id']);
+            }
+            console.log(apptList, data['ttId']);
+            for(let i = 0; i < apptList.length; i++) {
+                if(data['ttId'].indexOf(String(apptList[i])) == -1) {
+                    // data 리스트에 없는 경우 : 삭제해야 함
+                    await db.query(rawQuery, [apptList[i]]);
+                }
+            }
         } catch(err) {
             return err;
         }
@@ -63,9 +111,5 @@ module.exports = {
         } catch(err) {
             return err;
         }
-    },
-
-    insertAppt: async() => {
-        return 0;
     }
 }

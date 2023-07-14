@@ -22,8 +22,8 @@ router.get(
     teacherController.teacherAppt
 );
 
-router.get(
-    '/addTimeProcess',
+router.post(
+    '/confirmAbleTime',
     teacherController.teacherAddAppt
 );
 

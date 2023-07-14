@@ -40,9 +40,9 @@ module.exports = {
     },
 
     teacherAddAppt: async(req, res) => {
-        console.log(req);
-        await teacherModel.insertAppt();
-        res.send('success');
+        await teacherModel.insertAppt(id, req.body);
+        await teacherModel.deleteAppt(id, req.body);
+        res.redirect('/teacher/appointments');
     },
 
     teacherRegister: async(req, res) => {

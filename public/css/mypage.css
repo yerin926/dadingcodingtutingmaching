@@ -126,6 +126,7 @@
 
 .able-board .plus:hover {
   background-color: var(--dc-blue-ligt);
+  aspect-ratio: 1/1;
   border-radius: 100%;
 }
 

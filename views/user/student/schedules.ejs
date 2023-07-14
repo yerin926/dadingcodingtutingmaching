@@ -1,0 +1,33 @@
+<head>
+    <script src="/js/calendar.js" defer></script>
+</head>
+
+<div>
+    <label class="fs-1 fw-bold title">나의 수업 일정</label>
+    <% if (info[0] == undefined) { %>
+        <h3>예정된 수업 일정이 없습니다.</h3>
+    <% } else { %>
+        <h3>매주 <%= info[0].weekday %> <%= info[0].time %></h3>
+    <% } %>
+    <input type="hidden" id="jsonClasses" value="<%= JSON.stringify(info) %>">
+
+    <div class='rap'>
+        <div class="header">
+            <div class="calendar-btn prevDay"><i class="ri-arrow-left-s-line"></i></div>
+            <h2 class='dateTitle'></h2>
+            <div class="calendar-btn nextDay"><i class="ri-arrow-right-s-line"></i></div>
+        </div>
+
+        <div class="grid dateHead">
+            <div>일</div>
+            <div>월</div>
+            <div>화</div>
+            <div>수</div>
+            <div>목</div>
+            <div>금</div>
+            <div>토</div>
+        </div>
+
+        <div class="grid dateBoard"></div>
+    </div>
+</div>

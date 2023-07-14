@@ -1,0 +1,104 @@
+<label class="fs-1 fw-bold title">안녕하세요 <%= info.name %>님!</label>
+<hr>
+<div class="d-flex">
+    <div>
+        <form class='mb-5' action="settings/edit" method="post">
+            <table class="table table-hover info">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">INFORMATION</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td scope="col info-left">ID</td>
+                    <td scope="col">
+                        <input type="text" disabled value=<%= info.id %>>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="col">Password</td>
+                    <td scope="col">
+                        <input type="password" disabled value=<%= info.pw %>>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="col">Name</td>
+                    <td scope="col">
+                        <input name='name' type="text" value=<%= info.name %>>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="col">Phone</td>
+                    <td scope="col">
+                        <input
+                        oninput="autoHyphen2(this)"
+                        maxlength="13"
+                        name="phone"
+                        placeholder="010-0000-0000"
+                        required
+                        type="text"
+                        value=<%= info.phone %>
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="col">Email</td>
+                    <td scope="col">
+                        <input type="text" disabled value=<%= info.email %>>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td scope="col">University</td>
+                    <td scope="col">
+                        <input name="uni" type="text" value=<%= info.t_school %>>
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td scope="col">Major</td>
+                    <td scope="col">
+                        <input name='major' type="text" value=<%= info.t_major %>>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td scope="col">Birth</td>
+                    <td scope="col">
+                        <input name='birth' type="date" value=<%= info.t_birth %>>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="btn-blue-light">Confirm</button>
+        </form>
+        
+        <form action="settings/updatepw" method="post">
+            <table class="table table-hover info">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">Update Password</th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td scope="col">Old</td>
+                        <td scope="col">
+                            <input name='oldpw' type="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col">New</td>
+                        <td scope="col">
+                            <input name='newpw' type="password">
+                        </td>
+                    </tr>
+            </table>
+            <button type="submit" class="btn-blue-light">Confirm</button>
+        </form>
+    </div>
+    <img src="/images/Codetyping.png">
+</div>
+
+<script>
+    const autoHyphen2 = (target) => {
+        target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+    }
+</script>
