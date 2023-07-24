@@ -46,8 +46,8 @@ module.exports = {
     getApptById: async(id) => {
         try {
             let rawQuery = `
-            SELECT st_id, st_sid, st_day, st_start, st_end,
-            TIME_FORMAT(st_start, '%H:%i') AS form_st_start, TIME_FORMAT(st_end, '%H:%i') AS form_st_end
+            SELECT st_id, st_sid, st_day, st_day AS day, st_start, st_end,
+            TIME_FORMAT(st_start, '%H:%i') AS form_start, TIME_FORMAT(st_end, '%H:%i') AS form_end
             FROM able_stimes
             WHERE st_sid=?`
             let res = await db.query(rawQuery, [id]);
@@ -57,52 +57,22 @@ module.exports = {
         }
     },
 
-    insertAppt: async(id, data) => {
-        try {
-            let rawQuery = `
-            INSERT INTO able_stimes (st_sid, st_day, st_start, st_end)
-            VALUES (?, ?, ?, ?);
-            `
-
-            dataLength = data['new'].length;
-            if(dataLength === 0) {
-                return;
-            } else if(dataLength === 1) {
-                await db.query(rawQuery, [id, data['day'], data['startTime'], data['endTime']]);
-            } else {
-                for(let i = 0; i < dataLength; i++) {
-                    await db.query(rawQuery, [id, data['day'][i], data['startTime'][i], data['endTime'][i]]);
-                }
-            }
-        } catch(err) {
-            return err;
-        }
-    },
-
-    deleteAppt: async(id, data) => {
-        try {
-            let getApptRawQuery = `
-            SELECT st_id
-            FROM able_stimes
-            WHERE st_sid=?;`;
-            let rawQuery = `
+    addAppt: async(id, data) => {
+        //일정 데이터 전체 삭제한 다음에 갱신된 내용 추가하는 방식
+        let clearRawQuery = `
             DELETE FROM able_stimes
-            WHERE st_id=?;`;
-            let res = await db.query(getApptRawQuery, [id]);
-            let appt = res[0];
-            let apptList = [];
-            for(let j = 0; j < appt.length; j++) {
-                apptList.push(appt[j]['st_id']);
+            WHERE st_sid=?;`;
+        let insertRawQuery = `
+            INSERT INTO able_stimes (st_sid, st_day, st_start, st_end)
+            VALUES (?, ?, ?, ?);`;
+        await db.query(clearRawQuery, [id]);
+        console.log(data);
+        if(data['day'].length > 1) {
+            for(let i = 0; i < data['day'].length; i++) {
+                await db.query(insertRawQuery, [id, data['day'][i], data['startTime'][i], data['endTime'][i]]);
             }
-            console.log(apptList, data['stId']);
-            for(let i = 0; i < apptList.length; i++) {
-                if(data['stId'].indexOf(String(apptList[i])) == -1) {
-                    // data 리스트에 없는 경우 : 삭제해야 함
-                    await db.query(rawQuery, [apptList[i]]);
-                }
-            }
-        } catch(err) {
-            return err;
+        } else {
+            await db.query(insertRawQuery, [id, data['day'], data['startTime'], data['endTime']]);
         }
     }
 }

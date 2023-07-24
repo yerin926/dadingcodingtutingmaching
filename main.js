@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 
 const teacherRouter = require("./routers/teacherRouter.js");
 const studentRouter = require("./routers/studentRouter.js");
+const adminRouter = require("./routers/adminRouter.js");
 
 //View
 const layouts = require("express-ejs-layouts");
@@ -29,6 +30,9 @@ app.use("/teacher", teacherRouter);
 //학생 페이지
 app.use('/student', studentRouter);
 
+//관리자 페이지
+app.use('/admin', adminRouter);
+
 //About Us
 app.get('/about', (req, res) => {
   res.send('Welcome');
@@ -39,12 +43,12 @@ app.get('/recruit', (req, res) => {
   res.send('Nice');
 });
 
-//Sign In
+//Sign up
 app.get('/join', (req, res) => {
   res.send('input details');
 });
 
-//Login
+//Sign in
 app.get('/login', (req, res) => {
   res.send('login page');
 });

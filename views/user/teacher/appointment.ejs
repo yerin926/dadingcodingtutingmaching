@@ -1,90 +1,212 @@
-<head>
-  <script src="/js/appointment.js" defer></script>
-</head>
-
 <label class="fs-1 fw-bold title">되는 시간 등록</label>
 
+<input type="hidden" id="jsonClasses" value="<%= JSON.stringify(info) %>">
+
 <div class="d-grid able-board">
-
+  
   <div class="row">
-
+    
     <div class="col-md-12 col-lg-6">
-
+      
       <div class="d-grid my-5">
         <div class="row mb-5">
           <div class="col fs-4">되는 시간 선택</div>
-          <div class="col"><button id='appt-all' class="btn-blue-light" type="submit">전체 등록</button></div>
+          <div class="col"><button class="btn-blue-light appt-all">전체 등록</button></div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="6" hidden>일
+          <div class="col-2"></div>
+          <div class="col">
+            <div class="daybox">월</div>
+            <div class="daybox">화</div>
+            <div class="daybox">수</div>
+            <div class="daybox">목</div>
+            <div class="daybox">금</div>
+          </div>
+        </div>
+        
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">17:00</div>
           </div>
           <div class="col">
-            <input id="sun_start" type="time" name="sun-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="sun_end" type="time" name="sun-e">
-            <button id="sundaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon17" onclick="onClickTime('mon17')"></div>
+            <div class="timebox tue17" onclick="onClickTime('tue17')"></div>
+            <div class="timebox wed17" onclick="onClickTime('wed17')"></div>
+            <div class="timebox thu17" onclick="onClickTime('thu17')"></div>
+            <div class="timebox fri17" onclick="onClickTime('fri17')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="0" hidden>월
+          <div class="col-2">
+            <div class="title">17:30</div>
           </div>
           <div class="col">
-            <input id="mon_start" type="time" name="mon-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="mon_end" type="time" name="mon-e">
-            <button id="mondaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon1730" onclick="onClickTime('mon1730')"></div>
+            <div class="timebox tue1730" onclick="onClickTime('tue1730')"></div>
+            <div class="timebox wed1730" onclick="onClickTime('wed1730')"></div>
+            <div class="timebox thu1730" onclick="onClickTime('thu1730')"></div>
+            <div class="timebox fri1730" onclick="onClickTime('fri1730')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="1" hidden>화
+          <div class="col-2">
+            <div class="title">18:00</div>
           </div>
           <div class="col">
-            <input id="tue_start" type="time" name="thu-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="tue_end" type="time" name="thu-e">
-            <button id="tuesdaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon18" onclick="onClickTime('mon18')"></div>
+            <div class="timebox tue18" onclick="onClickTime('tue18')"></div>
+            <div class="timebox wed18" onclick="onClickTime('wed18')"></div>
+            <div class="timebox thu18" onclick="onClickTime('thu18')"></div>
+            <div class="timebox fri18" onclick="onClickTime('fri18')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="2" hidden>수
+          <div class="col-2">
+            <div class="title">18:30</div>
           </div>
           <div class="col">
-            <input id="wed_start" type="time" name="wed-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="wed_end" type="time" name="wed-e">
-            <button id="wednesdaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon1830" onclick="onClickTime('mon1830')"></div>
+            <div class="timebox tue1830" onclick="onClickTime('tue1830')"></div>
+            <div class="timebox wed1830" onclick="onClickTime('wed1830')"></div>
+            <div class="timebox thu1830" onclick="onClickTime('thu1830')"></div>
+            <div class="timebox fri1830" onclick="onClickTime('fri1830')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="3" hidden>목
+          <div class="col-2">
+            <div class="title">19:00</div>
           </div>
           <div class="col">
-            <input id="thu_start" type="time" name="thr-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="thu_end" type="time" name="thr-e">
-            <button id="thursdaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon19" onclick="onClickTime('mon19')"></div>
+            <div class="timebox tue19" onclick="onClickTime('tue19')"></div>
+            <div class="timebox wed19" onclick="onClickTime('wed19')"></div>
+            <div class="timebox thu19" onclick="onClickTime('thu19')"></div>
+            <div class="timebox fri19" onclick="onClickTime('fri19')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="4" hidden>금
+          <div class="col-2">
+            <div class="title">19:30</div>
           </div>
           <div class="col">
-            <input id="fri_start" type="time" name="fri-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="fri_end" type="time" name="fri-e">
-            <button id="fridaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon1930" onclick="onClickTime('mon1930')"></div>
+            <div class="timebox tue1930" onclick="onClickTime('tue1930')"></div>
+            <div class="timebox wed1930" onclick="onClickTime('wed1930')"></div>
+            <div class="timebox thu1930" onclick="onClickTime('thu1930')"></div>
+            <div class="timebox fri1930" onclick="onClickTime('fri1930')"></div>
           </div>
         </div>
+
         <div class="row p-2">
-          <div class="col-1 week">
-            <input name="wday" type="text" value="5" hidden>토
+          <div class="col-2">
+            <div class="title">20:00</div>
           </div>
           <div class="col">
-            <input id="sat_start" type="time" name="sat-s"><label>&nbsp;<i class="ri-arrow-right-line"></i>&nbsp;</label><input
-              id="sat_end" type="time" name="sat-e">
-            <button id="saturdaySchedule" class="plus" type="button"><i class="ri-add-circle-line"></i></button>
+            <div class="timebox mon20" onclick="onClickTime('mon20')"></div>
+            <div class="timebox tue20" onclick="onClickTime('tue20')"></div>
+            <div class="timebox wed20" onclick="onClickTime('wed20')"></div>
+            <div class="timebox thu20" onclick="onClickTime('thu20')"></div>
+            <div class="timebox fri20" onclick="onClickTime('fri20')"></div>
           </div>
         </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">20:30</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon2030" onclick="onClickTime('mon2030')"></div>
+            <div class="timebox tue2030" onclick="onClickTime('tue2030')"></div>
+            <div class="timebox wed2030" onclick="onClickTime('wed2030')"></div>
+            <div class="timebox thu2030" onclick="onClickTime('thu2030')"></div>
+            <div class="timebox fri2030" onclick="onClickTime('fri2030')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">21:00</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon21" onclick="onClickTime('mon21')"></div>
+            <div class="timebox tue21" onclick="onClickTime('tue21')"></div>
+            <div class="timebox wed21" onclick="onClickTime('wed21')"></div>
+            <div class="timebox thu21" onclick="onClickTime('thu21')"></div>
+            <div class="timebox fri21" onclick="onClickTime('fri21')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">21:30</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon2130" onclick="onClickTime('mon2130')"></div>
+            <div class="timebox tue2130" onclick="onClickTime('tue2130')"></div>
+            <div class="timebox wed2130" onclick="onClickTime('wed2130')"></div>
+            <div class="timebox thu2130" onclick="onClickTime('thu2130')"></div>
+            <div class="timebox fri2130" onclick="onClickTime('fri2130')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">22:00</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon22" onclick="onClickTime('mon22')"></div>
+            <div class="timebox tue22" onclick="onClickTime('tue22')"></div>
+            <div class="timebox wed22" onclick="onClickTime('wed22')"></div>
+            <div class="timebox thu22" onclick="onClickTime('thu22')"></div>
+            <div class="timebox fri22" onclick="onClickTime('fri22')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">22:30</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon2230" onclick="onClickTime('mon2230')"></div>
+            <div class="timebox tue2230" onclick="onClickTime('tue2230')"></div>
+            <div class="timebox wed2230" onclick="onClickTime('wed2230')"></div>
+            <div class="timebox thu2230" onclick="onClickTime('thu2230')"></div>
+            <div class="timebox fri2230" onclick="onClickTime('fri2230')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">23:00</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon23" onclick="onClickTime('mon23')"></div>
+            <div class="timebox tue23" onclick="onClickTime('tue23')"></div>
+            <div class="timebox wed23" onclick="onClickTime('wed23')"></div>
+            <div class="timebox thu23" onclick="onClickTime('thu23')"></div>
+            <div class="timebox fri23" onclick="onClickTime('fri23')"></div>
+          </div>
+        </div>
+
+        <div class="row p-2">
+          <div class="col-2">
+            <div class="title">23:30</div>
+          </div>
+          <div class="col">
+            <div class="timebox mon2330" onclick="onClickTime('mon2330')"></div>
+            <div class="timebox tue2330" onclick="onClickTime('tue2330')"></div>
+            <div class="timebox wed2330" onclick="onClickTime('wed2330')"></div>
+            <div class="timebox thu2330" onclick="onClickTime('thu2330')"></div>
+            <div class="timebox fri2330" onclick="onClickTime('fri2330')"></div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -93,30 +215,37 @@
 
       <% let timeHTML='' ; %>
       <% info.forEach(time=> { %>
-        <% timeHTML +=`<div class='delete-item'><div class="row p-2"><input name="ttId" value=${time.tt_id} hidden>
-            <div class="col">${time.tt_day}&nbsp;&nbsp;${time.form_tt_start}&nbsp;<i
-                class="ri-arrow-right-line"></i>&nbsp;${time.form_tt_end}</div>
+        <% timeHTML +=`<div class='delete-item'><div class="row p-2">
+          <input type="text" name="day" hidden value="${time.day}">
+          <input type='text' name='startTime' hidden value='${time.form_start}'>
+          <input type='text' name='endTime' hidden value='${time.form_end}'>
+          <div class="col">${time.tt_day}&nbsp;&nbsp;${time.form_start}&nbsp;<i
+            class="ri-arrow-right-line"></i>&nbsp;${time.form_end}</div>
             <div class="col"><button type='button' class="delete"><i class="ri-delete-bin-line"></i></button></div>
           </div></div>` %>
-      <% }); %>
+          <% }); %>
 
-      <div class="d-grid my-5 able-board">
-        <form action="confirmAbleTime" method="post">
-          <div class="row mb-5">
+          <div class="d-grid my-5 able-board">
+            <form action="confirmAbleTime" method="post">
+              <div class="row mb-5">
             <div class="col fs-4">등록된 시간</div>
             <div class="col"><button class="btn-blue-light" type="submit">변경 사항 적용</button>
             </div>
           </div>
-          <%- timeHTML %>
-          <div class="row my-2">
+          <div class="time-container">
+            <%- timeHTML %>
+          </div>
+          <!-- <div class="row my-2">
             <div class="col">------ 새로운 일정 ------</div>
           </div>
-          <div id="newAvailable"></div>
+          <div id="newAvailable"></div> -->
         </form>
       </div>
-
+      
     </div>
-
+    
   </div>
 
 </div>
+
+<script src="/js/addSchedule.js" defer></script>

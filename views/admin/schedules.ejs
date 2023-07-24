@@ -1,0 +1,21 @@
+<div class="d-flex">
+   <%- include('./sidebar.ejs') %>
+    <div class="content-mypage">
+        <% teacherSchedule.forEach(element => { %>
+            <span><%= element.tt_id %></span>
+            <span><%= element.tt_tid %></span>
+            <span><%= element.tt_day %></span>
+            <span><%= element.tt_start %></span>
+            <span><%= element.tt_end %></span>
+            <br />
+        <% }) %>
+        <% studentSchedule.forEach(element => { %>
+            <span><%= element.st_id %></span>
+            <span><%= element.st_sid %></span>
+            <span><%= element.st_day %></span>
+            <span><%= element.st_start %></span>
+            <span><%= element.st_end %></span>
+            <br />
+        <% }) %>
+    </div>
+</div>

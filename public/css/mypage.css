@@ -138,3 +138,26 @@
   background-color: var(--dc-blue-dark);
   color: white;
 }
+
+/* 되는시간 수정 */
+.able-board .title {
+  display: inline-block;
+  text-align: center;
+  height: 1.5rem;
+}
+.able-board .daybox {
+  display: inline-block;
+  text-align: center;
+  width: 3rem;
+  height: 1.5rem;
+}
+.able-board .timebox {
+  display: inline-block;
+  border: 0.5px solid black;
+  width: 3rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.able-board .filled {
+  background-color: var(--dc-blue);
+}

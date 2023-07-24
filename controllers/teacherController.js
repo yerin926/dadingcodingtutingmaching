@@ -41,8 +41,7 @@ module.exports = {
     },
 
     teacherAddAppt: async(req, res) => {
-        await teacherModel.insertAppt(id, req.body);
-        await teacherModel.deleteAppt(id, req.body);
+        await teacherModel.addAppt(id, req.body);
         res.redirect('/teacher/appointments');
     },
 

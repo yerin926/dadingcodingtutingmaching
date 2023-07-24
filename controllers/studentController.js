@@ -40,8 +40,7 @@ module.exports = {
     },
 
     studentAddAppt: async(req, res) => {
-        await studentModel.insertAppt(id, req.body);
-        await studentModel.deleteAppt(id, req.body);
+        await studentModel.addAppt(id, req.body);
         res.redirect('/student/appointments');
     },
 };
